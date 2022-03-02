@@ -25,7 +25,8 @@ namespace Wipro.ConsoleApp.Controller
 
                 var listaMoedaData = listaDadoMoedaData
                     .Where(item => (item.DataRef >= moedaDTO.Data_Inicio && item.DataRef <= moedaDTO.Data_Fim) ||
-                           item.IdMoeda.Trim().Equals(moedaDTO.Moeda.Trim()))
+                            (item.DataRef >= moedaDTO.Data_Inicio && item.DataRef <= moedaDTO.Data_Fim && 
+                             item.IdMoeda.Trim().Equals(moedaDTO.Moeda.Trim())))
                     .OrderBy(x => x.DataRef).ThenBy(x => x.IdMoeda)
                     .ToList();
 
